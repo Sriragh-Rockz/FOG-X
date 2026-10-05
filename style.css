@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+}
+
+.camera-stage {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+#camera {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scaleX(-1);
+
+    background: #000;
+}
+
+#fogCanvas,
+#handCanvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+#fogCanvas {
+    z-index: 5;
+}
+
+#handCanvas {
+    z-index: 6;
+}
+
+.start-message {
+    position: absolute;
+
+    top: 42%;
+    left: 50%;
+
+    transform: translate(
+        -50%,
+        -50%
+    );
+
+    z-index: 10;
+
+    text-align: center;
+
+    color: white;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.logo {
+    font-size: clamp(
+        45px,
+        12vw,
+        100px
+    );
+
+    font-weight: 800;
+
+    letter-spacing: 10px;
+
+    text-shadow:
+        0 0 20px rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+}
+
+.start-message p {
+    margin-top: 12px;
+
+    font-size: 15px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.65;
+}
+
+.start-button {
+    position: absolute;
+
+    left: 50%;
+    bottom: 10%;
+
+    transform: translateX(-50%);
+
+    z-index: 11;
+
+    min-width: 150px;
+
+    padding: 15px 30px;
+
+    border: 1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.5
+        );
+
+    border-radius: 50px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    backdrop-filter: blur(12px);
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.start-button:hover {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.22
+        );
+
+    border-color: white;
+}
+
+.start-button:active {
+    transform:
+        translateX(-50%)
+        scale(0.96);
+}
+
+.camera-stage.active
+.start-message {
+    opacity: 0;
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(0.95);
+}
+
+.camera-stage.active
+.start-button {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+
+    .logo {
+        letter-spacing: 6px;
+    }
+
+    .start-button {
+        bottom: 8%;
+    }
+}

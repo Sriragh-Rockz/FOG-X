@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#000000"
+    >
+
+    <title>FOG-X</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="app">
+
+        <section class="camera-stage">
+
+            <!-- CAMERA -->
+            <video
+                id="camera"
+                autoplay
+                playsinline
+                muted
+            ></video>
+
+
+            <!-- FOG LAYER -->
+            <canvas
+                id="fogCanvas"
+            ></canvas>
+
+
+            <!-- HAND / FINGER INDICATOR -->
+            <canvas
+                id="handCanvas"
+            ></canvas>
+
+
+            <!-- START SCREEN -->
+            <div
+                id="startMessage"
+                class="start-message"
+            >
+
+                <div class="logo">
+                    FOG-X
+                </div>
+
+                <p>
+                    Tap to enter
+                </p>
+
+            </div>
+
+
+            <!-- START BUTTON -->
+            <button
+                id="startButton"
+                class="start-button"
+            >
+                ENTER
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         MEDIAPIPE
+         ===================================================== -->
+
+    <script type="module">
+
+        import {
+            FaceLandmarker,
+            HandLandmarker,
+            FilesetResolver
+        } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/+esm";
+
+
+        window.FaceLandmarker =
+            FaceLandmarker;
+
+        window.HandLandmarker =
+            HandLandmarker;
+
+        window.FilesetResolver =
+            FilesetResolver;
+
+
+        window.dispatchEvent(
+            new Event("mediapipe-ready")
+        );
+
+    </script>
+
+
+    <!-- =====================================================
+         FOG-X JAVASCRIPT
+         ===================================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
